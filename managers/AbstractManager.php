@@ -13,7 +13,7 @@ abstract class AbstractManager
 
             $host = "db.3wa.io";
             $port = "3306";
-            $dbname = "hugotande_blog_POO";
+            $dbname = "hugotande_bookstore";
             $username = 'hugotande';
             $password = '41cebb5ac29e53ec4615efc7252da9de';
 
