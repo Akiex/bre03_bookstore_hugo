@@ -1,34 +1,39 @@
 <?php
 
-// Pour le Books
+//J'ai fait des boucles pour récupérer tous les livres et tous les auteurs (Sabrina)
+
+
+// Pour les Books
 require_once "managers/BookManager.php";
 
 $bookManager = new BookManager();
-$bookId = 1; // Exemple d'ID de livre
+$books = $bookManager->findAll(); 
 
-$book = $bookManager->findOne($bookId);
-
-if ($book) {
-    echo "Titre : " . $book->getTitle() . "<br>";
-    echo "Extrait : " . $book->getExcerpt() . "<br>";
-    echo "Prix : " . $book->getPrice() . "€<br>";
-    echo "Auteur (ID) : " . $book->getAuthor() . "<br>";
+if ($books && count($books) > 0) {
+    echo "<h2>Liste des livres :</h2>";
+    foreach ($books as $book) {
+        echo "Titre : " . $book->getTitle() . "<br>";
+        echo "Extrait : " . $book->getExcerpt() . "<br>";
+        echo "Prix : " . $book->getPrice() . "€<br>";
+        echo "Auteur (ID) : " . $book->getAuthor() . "<br><br>";
+    }
 } else {
-    echo "Aucun livre trouvé pour l'ID : $bookId";
+    echo "Aucun livre trouvé.";
 }
 
-// Pour les Author 
-
+// Pour les Authors
 require_once "managers/AuthorManager.php";
+
 $authorManager = new AuthorManager();
-$authorId = 1; // Exemple d'ID d'auteur
+$authors = $authorManager->findAll(); 
 
-$author = $authorManager->findOne($authorId);
-
-if ($author) {
-    echo "Prénom : " . $author->getFirstname() . "<br>";
-    echo "Nom : " . $author->getLastname() . "<br>";
-    echo "Biographie : " . $author->getBiography() . "<br>";
+if ($authors && count($authors) > 0) {
+    echo "<h2>Liste des auteurs :</h2>";
+    foreach ($authors as $author) {
+        echo "Prénom : " . $author->getFirstname() . "<br>";
+        echo "Nom : " . $author->getLastname() . "<br>";
+        echo "Biographie : " . $author->getBiographie() . "<br><br>";
+    }
 } else {
-    echo "Aucun auteur trouvé pour l'ID : $authorId";
+    echo "Aucun auteur trouvé.";
 }
